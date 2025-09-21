@@ -38,10 +38,21 @@ public class AuthenticationScreen extends BaseScreen{
         return new ContactListScreen(driver);
     }
 
+    public AuthenticationScreen submitLoginNegative() {
+        loginBtn.click();
+        return this;
+    }
+
     public AuthenticationScreen fillLoginRegistrationForm(Auth auth) {
         should(emailEditText,10);
         type(emailEditText, auth.getEmail());
         type(passwordEditText, auth.getPassword());
+        return this;
+    }
+
+
+    public AuthenticationScreen isErrorMessageHasText(String text) {
+        checkAlertText(text);
         return this;
     }
 }
